@@ -4,7 +4,7 @@ import sys
 from dotenv import load_dotenv
 
 from config_manager import PROVIDER_NAME
-from api_module.api_factory import get_client
+from portus_api_module.api_factory import get_client
 from interface.cli.cli_chat import run_chat_mode
 from interface.cli.cli_audio import run_audio_mode
 from interface.cli.cli_embed import run_embedding_mode
