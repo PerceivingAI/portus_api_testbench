@@ -1,17 +1,19 @@
-from config_manager import get_parameters
+from config_manager import (
+    TEMPERATURE,
+    TOP_P,
+    TOP_K,
+    MAX_TOKENS
+)
 
 def chat_with_model(client, messages, tools=None, tool_choice="auto"):
-    params = get_parameters()
-
-    # Build kwargs only if values are not None
     kwargs = {
-        "temperature": params.get("temperature"),
-        "top_p": params.get("top_p"),
-        "max_tokens": params.get("max_tokens"),
-        "top_k": params.get("top_k")  # Only present for OpenAI
+        "temperature": TEMPERATURE,
+        "top_p": TOP_P,
+        "max_tokens": MAX_TOKENS,
+        "top_k": TOP_K  # Only used by OpenAI-compatible models
     }
 
-    # Remove keys with None values to avoid passing unsupported params
+    # Clean out None values to avoid passing unsupported args
     kwargs = {k: v for k, v in kwargs.items() if v is not None}
 
     return client.chat(
