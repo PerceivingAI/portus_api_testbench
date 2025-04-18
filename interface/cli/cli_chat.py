@@ -9,7 +9,7 @@ load_dotenv()
 
 def run_chat_mode():
     api_key = os.getenv(f"{PROVIDER_NAME.upper()}_API_KEY")
-    client = get_client(api_key)
+    client = get_client()
 
     print("💬 Chat mode activated. Type /exit to return to menu.\n")
 

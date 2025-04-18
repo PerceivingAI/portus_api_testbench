@@ -1,8 +1,13 @@
 # api_module/api_factory.py
 
+import os
 from config_manager import PROVIDER_NAME, MODEL, BASE_URL, STREAM
 
-def get_client(api_key: str):
+def get_client():
+    api_key = os.getenv(f"{PROVIDER_NAME.upper()}_API_KEY")
+    if not api_key:
+        raise ValueError(f"API key for provider '{PROVIDER_NAME}' not found in environment variables.")
+
     if PROVIDER_NAME == "gemini":
         from .api_gemini import GeminiClient
         return GeminiClient(
