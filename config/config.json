@@ -1,6 +1,6 @@
 {
-    "provider": "gemini",
-    "model": "gemini-2.0-flash",
-    "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/"
-  }
-  
+  "provider": "gemini",
+  "model": "gemini-2.0-flash",
+  "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/",
+  "stream": true
+}
