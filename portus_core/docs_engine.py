@@ -1,7 +1,7 @@
 import os
 from google.genai import types
 from portus_api_module.api_factory import get_understanding_client as get_client
-from core.utils import normalize_and_validate_pdf
+from portus_core.utils import normalize_and_validate_pdf
 
 def analyze_pdf(file_path, prompt="Summarize this document"):
     """

@@ -1,4 +1,4 @@
-from core.docs_engine import analyze_pdf
+from portus_core.docs_engine import analyze_pdf
 from interface.cli.utils import handle_special_commands
 
 def run_docs_mode():

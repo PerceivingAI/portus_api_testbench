@@ -2,7 +2,7 @@ import os
 import sys
 from dotenv import load_dotenv
 
-from core.chat_engine import chat_with_model
+from portus_core.chat_engine import chat_with_model
 from config_manager import STREAM, PROVIDER_NAME
 from portus_api_module.api_factory import get_client
 from interface.cli.utils import handle_special_commands  # ✅ Imported here

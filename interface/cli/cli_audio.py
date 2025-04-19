@@ -1,4 +1,4 @@
-from core.audio_engine import analyze_audio
+from portus_core.audio_engine import analyze_audio
 from interface.cli.utils import handle_special_commands
 
 def run_audio_mode():

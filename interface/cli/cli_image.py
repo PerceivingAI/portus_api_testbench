@@ -1,5 +1,5 @@
 import sys
-from core.image_engine import analyze_image
+from portus_core.image_engine import analyze_image
 from interface.cli.utils import handle_special_commands
 
 def run_image_mode():

@@ -3,7 +3,7 @@
 from google.genai import types
 from portus_api_module.api_factory import get_understanding_client as get_client
 from config_manager import MODEL
-from core.utils import normalize_and_validate_audio
+from portus_core.utils import normalize_and_validate_audio
 
 def analyze_audio(file_path, prompt="Describe the audio"):
     """
