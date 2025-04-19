@@ -2,3 +2,4 @@ openai
 dotenv
 tiktoken
 google-genai
+httpx

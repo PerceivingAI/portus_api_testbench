@@ -1,15 +1,12 @@
-# interface/cli/cli_audio.py
-
 from core.audio_engine import analyze_audio
+from interface.cli.utils import handle_special_commands
 
 def run_audio_mode():
-    print("🎧 Audio analysis mode activated. Type /exit to return.\n")
+    print("🎧 Audio analysis mode activated. Type /menu to return or /exit to quit.\n")
 
     while True:
         file_path = input("📁 Enter path to audio file (.mp3, .wav, .flac): ").strip()
-
-        if file_path.lower() == "/exit":
-            print("👋 Exiting audio mode.\n")
+        if not handle_special_commands(file_path):
             break
 
         prompt = input("📝 Instruction for the model (or press Enter for default): ").strip()

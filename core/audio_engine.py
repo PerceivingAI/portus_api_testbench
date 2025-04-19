@@ -1,9 +1,9 @@
 # core/audio_engine.py
 
-import os
 from google.genai import types
 from portus_api_module.api_factory import get_audio_client as get_client
 from config_manager import MODEL
+from core.utils import normalize_and_validate_audio
 
 def analyze_audio(file_path, prompt="Describe the audio"):
     """
@@ -16,10 +16,9 @@ def analyze_audio(file_path, prompt="Describe the audio"):
     Returns:
         str: Model's response.
     """
-    normalized_path = os.path.normpath(file_path.strip().strip('"').strip("'"))
-
-    if not os.path.exists(normalized_path):
-        return "[audio_engine] ❌ File not found."
+    normalized_path, error = normalize_and_validate_audio(file_path)
+    if error:
+        return f"[audio_engine] {error}"
 
     try:
         client = get_client()

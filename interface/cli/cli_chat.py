@@ -1,17 +1,18 @@
 import os
+import sys
 from dotenv import load_dotenv
 
 from core.chat_engine import chat_with_model
 from config_manager import STREAM, PROVIDER_NAME
 from portus_api_module.api_factory import get_client
+from interface.cli.utils import handle_special_commands  # ✅ Imported here
 
 load_dotenv()
 
 def run_chat_mode():
-    api_key = os.getenv(f"{PROVIDER_NAME.upper()}_API_KEY")
     client = get_client()
 
-    print("💬 Chat mode activated. Type /exit to return to menu.\n")
+    print("💬 Chat mode activated. Type /exit to quit or /menu to return.\n")
 
     while True:
         prompt = input("🧑 You: ").strip()
@@ -20,9 +21,8 @@ def run_chat_mode():
             print("⚠️ Empty input, try again.")
             continue
 
-        if prompt.lower() == "/exit":
-            print("👋 Exiting chat mode.\n")
-            break
+        if not handle_special_commands(prompt):
+            break  # /menu returns False, exits loop
 
         messages = [{"role": "user", "content": prompt}]
         response = chat_with_model(client, messages)
