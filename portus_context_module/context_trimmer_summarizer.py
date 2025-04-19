@@ -13,8 +13,9 @@ def trim_context(history, trim_ratio):
         trim_ratio (float): Ratio of messages to trim from the start.
     """
     if not history:
+        pass
         #print("[trimmer] 🟡 Empty history — skipping trim.")
-        return
+        #return
 
     #print("\n[trimmer] ✂️ Trimming history...")
 
@@ -36,10 +37,11 @@ def trim_context(history, trim_ratio):
 
 def summarize_context(history, summarize_ratio):
     if not history:
+        pass
         #print("[summarizer] 🟡 Empty history — skipping summarization.")
-        return
+        #return
 
-    #print("\n[summarizer] 📝 Summarizing history...")
+    print("\n[summarizer] 📝 Summarizing history...")
 
     total_messages = len(history)
     summarize_count = max(2, int(total_messages * summarize_ratio))
@@ -78,8 +80,9 @@ def summarize_context(history, summarize_ratio):
 
         summary = summary.strip()
         if not summary:
+            pass
             #print("[summarizer] ❌ Empty streamed summary.")
-            return
+            #return
 
         summary_message = {
             "role": "assistant",
@@ -91,10 +94,11 @@ def summarize_context(history, summarize_ratio):
         #print("\n[summarizer] ✅ Final summary (RAW):")
         #print(repr(summary_message["text"]))
 
-        #print("\n[summarizer] 🔁 History after summarization (RAW):")
+        # print("\n[summarizer] 🔁 History after summarization (RAW):")
         # for i, entry in enumerate(history):
-        #     print(f"  {i+1:02d}. {entry['role']} → {repr(entry['text'])}")
+        #      print(f"  {i+1:02d}. {entry['role']} → {repr(entry['text'])}")
 
     except Exception as e:
         pass
         #print(f"[summarizer] ❌ Failed to summarize: {e}")
+        #return

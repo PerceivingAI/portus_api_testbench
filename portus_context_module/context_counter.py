@@ -4,8 +4,7 @@ from config_manager import N_CTX
 from tiktoken import get_encoding
 from portus_context_module.context_trimmer_summarizer import (
     trim_context,
-    summarize_context,
-    test_call
+    summarize_context
 )
 
 # --- Thresholds ---

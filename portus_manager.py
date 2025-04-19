@@ -12,7 +12,7 @@ load_dotenv()
 
 def show_menu():
     while True:
-        print("\nSelect mode:")
+        print("\nSelect a Test:")
         print("1. Chat")
         print("2. Audio")
         print("3. Embeddings")

@@ -20,7 +20,7 @@ USING_OPENAI_STYLE = "openai" in BASE_URL.lower()
 def chat_with_model(client, messages, tools=None, tool_choice="auto"):
     # Step 1: Add user message(s) to context
     for msg in messages:
-        print(f"[chat_engine] ➕ Sending to context: {msg}")
+        #print(f"[chat_engine] ➕ Sending to context: {msg}")
         context.add_turn(msg["role"], msg["content"])
 
     # Step 2: Convert full context history to appropriate format

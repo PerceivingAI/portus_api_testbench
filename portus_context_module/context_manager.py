@@ -12,7 +12,7 @@ class ContextManager:
             print(f"[ContextManager] Skipped empty turn → role: {role!r}, text: {text!r}")
             return
 
-        print(f"[ContextManager] Adding turn → role: {role!r}, text: {text.strip()!r}")
+        #print(f"[ContextManager] Adding turn → role: {role!r}, text: {text.strip()!r}")
         entry = {"role": role, "text": text.strip()}
         if meta:
             entry["meta"] = meta
@@ -21,8 +21,8 @@ class ContextManager:
         self._enforce_turn_limit()
 
         # Check token threshold after each message
-        if is_above_threshold(self.history):
-            print("[ContextManager] ⚠️ Context nearing limit. Trimming or summarization should trigger here.")
+        # if is_above_threshold(self.history):
+        #     print("[ContextManager] ⚠️ Context nearing limit. Trimming or summarization should trigger here.")
 
 
     def get_history(self):
