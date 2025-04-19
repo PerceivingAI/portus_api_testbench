@@ -45,8 +45,6 @@ PROVIDER_MODE     = get_provider_mode()
 PROVIDER_NAME     = get_provider_name()
 MODEL             = get_model()
 BASE_URL          = get_model_url("base_url")
-EMBEDDING_URL     = get_model_url("embedding_url")
-AUDIO_URL         = get_model_url("audio_url")
 
 SYSTEM_PROMPT     = get_system_prompt()
 PARAMETERS        = get_parameters()

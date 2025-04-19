@@ -8,17 +8,13 @@
       "default_provider": "gemini",
 
       "openai": {
-        "model": "gpt-4",
-        "base_url": "https://api.openai.com/v1",
-        "embedding_url": "https://api.openai.com/v1/embeddings",
-        "audio_url": "https://api.openai.com/v1/audio"
+        "model": "gpt-4.1-nano-2025-04-14",
+        "base_url": "https://api.openai.com/v1"
       },
 
       "gemini": {
         "model": "gemini-2.0-flash",
-        "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/",
-        "embedding_url": "https://generativelanguage.googleapis.com/v1beta/embeddings/",
-        "audio_url": "https://generativelanguage.googleapis.com/v1beta/audio/"
+        "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/"
       }
     },
 

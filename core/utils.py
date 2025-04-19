@@ -34,3 +34,6 @@ def normalize_and_validate_pdf(file_path, max_mb=20):
 
 def normalize_and_validate_audio(file_path, allowed_exts=(".mp3",), max_mb=20):
     return normalize_and_validate_file(file_path, allowed_exts=allowed_exts, max_mb=max_mb)
+
+def normalize_and_validate_image(file_path, allowed_exts=(".jpg", ".jpeg", ".png", ".webp"), max_mb=20):
+    return normalize_and_validate_file(file_path, allowed_exts=allowed_exts, max_mb=max_mb)
