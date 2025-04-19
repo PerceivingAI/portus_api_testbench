@@ -4,52 +4,46 @@ import argparse
 import sys
 from dotenv import load_dotenv
 
-from interface.cli.cli_chat import run_chat_mode
-from interface.cli.cli_audio import run_audio_mode
-from interface.cli.cli_image import run_image_mode
-from interface.cli.cli_docs import run_docs_mode
+from interface.cli.cli_manager import cli_modes
 
 load_dotenv()
 
 def show_menu():
+    mode_names = list(cli_modes.keys())
+
     while True:
         print("\nWelcome to Portus! Please select a Test:")
-        print("1. Chat")
-        print("2. Audio")
-        print("3. Image")
-        print("4. Documents")
-        print("5. Exit")
-        choice = input("➤ Enter choice (1-5): ").strip()
+        for i, name in enumerate(mode_names, start=1):
+            print(f"{i}. {name}")
+        print(f"{len(mode_names)+1}. Exit")
 
-        if choice == "1":
-            run_chat_mode()
-        elif choice == "2":
-            run_audio_mode()
-        elif choice == "3":
-            run_image_mode()
-        elif choice == "4":
-            run_docs_mode()
-        elif choice == "5":
-            print("👋 Exiting.")
-            sys.exit(0)
+        choice = input(f"➤  Enter choice (1-{len(mode_names)+1}): ").strip()
+
+        if choice.isdigit():
+            index = int(choice)
+            if 1 <= index <= len(mode_names):
+                mode_key = mode_names[index - 1]
+                cli_modes[mode_key]()  # call the run_*_mode function
+            elif index == len(mode_names) + 1:
+                print("👋 Exiting.")
+                sys.exit(0)
+            else:
+                print("❌ Invalid selection. Please try again.")
         else:
-            print("❌ Invalid selection. Please try again.")
+            print("❌ Invalid input. Please enter a number.")
+
 
 def launch_portus():
     parser = argparse.ArgumentParser(description="Portus Modular Entry Point")
-    parser.add_argument("--chat", action="store_true", help="Launch Chat with Context")
-    parser.add_argument("--audio", action="store_true", help="Launch Audio Understanding")
-    parser.add_argument("--image", action="store_true", help="Launch Image Understanding")
-    parser.add_argument("--docs", action="store_true", help="Launch Document Understanding")
+
+    for name in cli_modes:
+        parser.add_argument(f"--{name.lower()}", action="store_true", help=f"Launch {name} mode")
+
     args = parser.parse_args()
 
-    if args.chat:
-        run_chat_mode()
-    elif args.audio:
-        run_audio_mode()
-    elif args.image:
-        run_image_mode()
-    elif args.docs:
-        run_docs_mode()
-    else:
-        show_menu()
+    for name, func in cli_modes.items():
+        if getattr(args, name.lower()):
+            func()
+            return
+
+    show_menu()

@@ -1,7 +1,6 @@
-import os
 from google.genai import types
 from portus_api_module.api_factory import get_understanding_client as get_client
-from portus_core.utils import normalize_and_validate_image
+from portus_engine_module.utils import normalize_and_validate_image
 from config_manager import MODEL
 
 def analyze_image(file_path, prompt="Describe this image."):

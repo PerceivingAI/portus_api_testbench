@@ -1,5 +1,5 @@
 openai
+google-genai
 dotenv
 tiktoken
-google-genai
 httpx

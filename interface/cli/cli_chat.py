@@ -2,10 +2,13 @@ import os
 import sys
 from dotenv import load_dotenv
 
-from portus_core.chat_engine import chat_with_model
+from portus_engine_module.engine_chat import chat_with_model
 from config_manager import STREAM, PROVIDER_NAME
 from portus_api_module.api_factory import get_client
-from interface.cli.utils import handle_special_commands  # ✅ Imported here
+from interface.cli.utils import handle_special_commands
+
+MENU_NAME = "Contextual Chat"
+MENU_ORDER = 1
 
 load_dotenv()
 

@@ -1,7 +1,7 @@
-import os
 from google.genai import types
 from portus_api_module.api_factory import get_understanding_client as get_client
-from portus_core.utils import normalize_and_validate_pdf
+from portus_engine_module.utils import normalize_and_validate_pdf
+from config_manager import MODEL
 
 def analyze_pdf(file_path, prompt="Summarize this document"):
     """
@@ -19,7 +19,7 @@ def analyze_pdf(file_path, prompt="Summarize this document"):
         print("[docs_engine] 📡 Sending PDF + prompt to model...")
 
         response = client.models.generate_content(
-            model="gemini-1.5-flash",
+            model=MODEL,
             contents=[
                 types.Part.from_bytes(data=pdf_bytes, mime_type="application/pdf"),
                 prompt

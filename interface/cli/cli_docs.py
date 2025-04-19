@@ -1,5 +1,8 @@
-from portus_core.docs_engine import analyze_pdf
+from portus_engine_module.engine_docs import analyze_pdf
 from interface.cli.utils import handle_special_commands
+
+MENU_NAME = "PDF"
+MENU_ORDER = 2
 
 def run_docs_mode():
     print("📄 Document analysis mode activated. Type /menu to return to menu, /exit to quit.\n")

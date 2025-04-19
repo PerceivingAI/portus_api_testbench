@@ -1,6 +1,9 @@
 import sys
-from portus_core.image_engine import analyze_image
+from portus_engine_module.engine_images import analyze_image
 from interface.cli.utils import handle_special_commands
+
+MENU_NAME = "Images"
+MENU_ORDER = 3
 
 def run_image_mode():
     print("🖼️  Image analysis mode activated. Type /exit to quit or /menu to return.\n")

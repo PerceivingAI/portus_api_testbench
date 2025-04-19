@@ -1,9 +1,8 @@
-# core/audio_engine.py
-
 from google.genai import types
 from portus_api_module.api_factory import get_understanding_client as get_client
+from portus_engine_module.utils import normalize_and_validate_audio
 from config_manager import MODEL
-from portus_core.utils import normalize_and_validate_audio
+
 
 def analyze_audio(file_path, prompt="Describe the audio"):
     """
