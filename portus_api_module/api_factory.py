@@ -28,3 +28,18 @@ def get_client():
 
     else:
         raise ValueError(f"Unsupported provider: {PROVIDER_NAME}")
+
+def get_audio_client():
+    import os
+    import google.genai as genai
+
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        print("[get_audio_client] ❌ Missing GEMINI_API_KEY in environment.")
+        return None
+
+    try:
+        return genai.Client(api_key=api_key)
+    except Exception as e:
+        print(f"[get_audio_client] ❌ Failed to initialize client: {e}")
+        return None
